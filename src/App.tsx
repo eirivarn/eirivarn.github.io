@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Link } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="hero">
+      {/* subtle animated gradient blobs */}
+      <div className="bg-anim" aria-hidden="true" />
 
-export default App
+      <header className="site-header">
+        <div className="brand">Eirik Varnes</div>
+        <nav className="nav">
+          <a href="https://github.com/eirivarn" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="#projects">Projects</a>
+          <Link to="/resume">Resume</Link>
+        </nav>
+      </header>
+
+      <main className="hero-content">
+        <h1>Robotics • Control • ML</h1>
+        <p>
+          I design and build reliable autonomous systems — from ROV control and observers
+          to RL navigation and 3D geospatial tooling.
+        </p>
+        <div className="cta">
+          <Link to="/resume" className="btn primary">View Resume</Link>
+          <a href="#projects" className="btn">See Projects</a>
+        </div>
+      </main>
+
+      <section id="projects" className="projects">
+        <h2>Featured Projects</h2>
+        <ul>
+          <li><strong>ROV Control</strong> — 6-DOF model, LQR + integral, observer, thruster mixing</li>
+          <li><strong>RL AUV Navigation</strong> — DQN/TD3 with LiDAR & memory buffers</li>
+          <li><strong>3D Building Pipeline</strong> — React-Three-Fiber, terrain & roof meshes</li>
+        </ul>
+      </section>
+
+      <footer className="site-footer">
+        © {new Date().getFullYear()} Eirik Varnes • Built with React + Vite • GitHub Pages
+      </footer>
+    </div>
+  );
+}
