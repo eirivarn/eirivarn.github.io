@@ -1,39 +1,31 @@
-/* ==== Resume page styles ==== */
-.resume {
-  --fg: #e6eefc;
-  --muted: #c9d5ef;
-  --line: rgba(255,255,255,0.12);
-  --card: rgba(255,255,255,0.05);
-  max-width: 1000px;
-  margin: 3rem auto;
-  padding: 0 clamp(1rem, 3vw, 2rem);
-  font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+/* Base */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body { margin: 0; background: #0b1020; color: #e6eefc; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+a { color: inherit; text-decoration: none; }
+
+/* Hero with Vanta background */
+.hero-vanta { position: relative; min-height: 80vh; display: grid; place-items: center; }
+.vanta-layer { position: absolute; inset: 0; z-index: 0; }
+.hero-inner {
+  position: relative; z-index: 1; text-align: center;
+  padding: clamp(2rem, 6vw, 6rem) 1rem; max-width: 1000px;
 }
-.resume h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin: 0; }
-.resume h2 { font-size: clamp(1.2rem, 2.4vw, 1.6rem); margin: 2rem 0 .6rem; }
-.resume h3 { font-size: 1rem; margin: 0 0 .15rem; }
-.resume .subtitle { color: var(--muted); margin: .25rem 0 .75rem; }
-.resume .summary { color: var(--muted); max-width: 80ch; }
-.resume .contact { list-style: none; padding: 0; margin: 0; display: grid; gap: .25rem; }
-.resume .resume-header {
-  display: grid; gap: 1rem; align-items: start;
-  grid-template-columns: 1.4fr 1fr;
-  padding-bottom: 1rem; border-bottom: 1px solid var(--line);
-}
-@media (max-width: 860px){ .resume .resume-header{ grid-template-columns: 1fr; } }
-.resume .item { padding: .9rem 1rem; border: 1px solid var(--line); border-radius: 14px; background: var(--card); margin-top: .75rem; }
-.resume .item-head { display: grid; gap: .2rem; }
-.resume .item .where { color: var(--muted); }
-.resume .meta { color: var(--muted); font-size: .95rem; margin-top: .25rem; }
-.resume .bullets { margin: .5rem 0 0; padding-left: 1.2rem; }
-.resume .bullets li { margin: .3rem 0; }
-.resume .bullets.two-col { columns: 2; column-gap: 2rem; padding-left: 0; list-style: disc inside; }
-@media (max-width: 720px){ .resume .bullets.two-col{ columns: 1; } }
-.resume .backlink { display: flex; gap: .8rem; justify-content: space-between; align-items: center; margin: 2rem 0 3rem; }
-@media print{
-  body { background: white; color: #111; }
-  .hero, .bg-anim, .site-header, .site-footer { display: none !important; }
-  .resume { max-width: none; margin: 0; }
-  .resume .item { background: transparent; border-color: #ddd; }
-  a { color: inherit; text-decoration: none; }
+.hero-inner h1 { margin: 0 0 .5rem; font-size: clamp(2rem, 6vw, 3rem); letter-spacing: .2px; }
+.tagline { color: #c9d5ef; margin: .25rem auto 1.25rem; max-width: 70ch; }
+.cta-row { display: inline-flex; gap: .8rem; flex-wrap: wrap; justify-content: center; }
+.btn { display: inline-block; padding: .7rem 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.06); }
+.btn:hover { border-color: rgba(255,255,255,.25); transform: translateY(-1px); transition: transform .12s ease, border-color .2s ease; }
+.btn.primary { background: linear-gradient(90deg,#a78bfa,#22d3ee); color: #08111f; border: none; font-weight: 600; }
+
+/* Projects + Footer (minimal) */
+.projects { max-width: 1000px; margin: 3rem auto 3.5rem; padding: 0 1rem; }
+.projects h2 { margin: 0 0 1rem; font-size: clamp(1.2rem, 2.2vw, 1.6rem); }
+.projects ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; }
+.projects li { padding: .9rem 1rem; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; }
+.site-footer { border-top: 1px solid rgba(255,255,255,.12); color: #c9d5ef; font-size: .95rem; padding: 1rem; text-align: center; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .vanta-layer { display: none; }
 }
